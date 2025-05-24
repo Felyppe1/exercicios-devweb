@@ -1,0 +1,8 @@
+DROP TABLE IF EXISTS agenda;
+
+CREATE TABLE agenda (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    address TEXT NOT NULL,
+    cellphone VARCHAR(20) UNIQUE NOT NULL
+);
