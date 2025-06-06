@@ -13,21 +13,6 @@ services:
     networks:
       - exercicios-devweb
 
-  tomcat:
-    image: tomcat:latest
-    container_name: exercicios-devweb-tomcat
-    ports:
-      - "8080:8080"
-    volumes:
-      - ./src/main/webapp:/usr/local/tomcat/webapps/ROOT
-    env_file:
-      - .env
-    working_dir: /app
-    depends_on:
-      - database
-    networks:
-      - exercicios-devweb
-
 volumes:
   exercicios-devweb:
 
