@@ -60,3 +60,5 @@ psql -U postgres -d devweb -f /init.sql
 #### 4. Acessar a aplicação
 
 Abra no navegador: http://localhost:8080/exercicios
+
+https://legendary-dollop-r965w4w5vjxfwjvj-8080.app.github.dev/
