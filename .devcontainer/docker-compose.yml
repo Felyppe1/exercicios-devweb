@@ -1,0 +1,32 @@
+services:
+  app:
+    image: mcr.microsoft.com/devcontainers/java:17
+    container_name: exercicios-devweb-app
+    volumes:
+      - ../:/workspaces/exercicios-devweb:cached # Montar o diretório no container remoto
+    env_file:
+      - ./.env
+    networks:
+      - exercicios-devweb
+    command: sleep infinity
+
+  database:
+    image: postgres
+    container_name: exercicios-devweb-db
+    environment:
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: ${DB_NAME}
+    ports:
+      - "5433:5432"
+    volumes:
+      - exercicios-devweb_db:/var/lib/postgresql/data
+      - ../init.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - exercicios-devweb
+
+volumes:
+  exercicios-devweb_db:
+
+networks:
+  exercicios-devweb:

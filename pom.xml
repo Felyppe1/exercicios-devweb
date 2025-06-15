@@ -37,7 +37,7 @@
     </dependencies>
 
     <build>
-        <finalName>exercicios</finalName>
+        <finalName>ROOT</finalName>
 
         <directory>${project.basedir}/target</directory>
 

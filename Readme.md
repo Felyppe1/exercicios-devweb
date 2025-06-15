@@ -2,7 +2,7 @@
 
 Repositório para fazer os exercícios da disciplina Desenvolvimento Dev Web
 
-## 🛠 Tecnologias utilizadas
+## Tecnologias utilizadas
 
 - Java 17+
 - Servlets & JSP
@@ -10,55 +10,42 @@ Repositório para fazer os exercícios da disciplina Desenvolvimento Dev Web
 - PostgreSQL
 - Dev Containers
 
----
+## Como rodar o projeto (com Dev Container)
 
-## 🚀 Como rodar o projeto
+### 1. Configurar variáveis de ambiente:
 
-### Liberar permissão de arquivos
+Copie o arquivo de exemplo `.env.example` para o `.env` dentro da pasta `/.devcontainer` e preencha as variáveis necessárias:
+```bash
+cp .env.example ./.devcontainer/.env
+# Edite o arquivo .env com os valores apropriados
+```
+
+### 2. Liberar permissão de arquivos
 
 ```bash
-chmod +x build.sh
 chmod +x /usr/local/sdkman/candidates/tomcat/current/bin/*.sh
 ```
 
-### Definir versão atual do Java
+### 3. Buildar e jogar no Tomcat
 
 ```bash
-sdk install java 17-open
+build.devcontainer.sh
 ```
 
-### Definir variáveis de ambiente
-
-Crie um arquivo `.env` na raiz do projeto e preencha as variáveis que estão no `.env.example`
-
-#### Subir o banco
-
-```bash
-docker compose up
-```
-
-#### Inicializar o banco com script `init.sql`
-
-```bash
-docker cp init.sql exercicios-devweb-db:/init.sql
-docker exec -it exercicios-devweb-db bash
-psql -U postgres -d devweb -f /init.sql
-```
-
-### Iniciar o tomcat
+### 4. Iniciar o tomcat
 
 ```bash
 /usr/local/sdkman/candidates/tomcat/current/bin/catalina.sh start
 ```
 
-#### Compilar o projeto (se necessário)
+### 5. Acessar a aplicação
+
+Abra no navegador: http://localhost:8080
+
+### Para criar tabelas no banco:
 
 ```bash
-./build.sh
+docker cp db.sql exercicios-devweb-db:/db.sql
+docker exec -it exercicios-devweb-db bash
+psql -U postgres -d devweb -f /db.sql
 ```
-
-#### 4. Acessar a aplicação
-
-Abra no navegador: http://localhost:8080/exercicios
-
-https://legendary-dollop-r965w4w5vjxfwjvj-8080.app.github.dev/

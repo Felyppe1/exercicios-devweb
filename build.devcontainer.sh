@@ -1,6 +1,6 @@
 #!/bin/bash
 
-WAR_NAME="exercicios.war"
+WAR_NAME="ROOT.war"
 
 mvn clean package
 
