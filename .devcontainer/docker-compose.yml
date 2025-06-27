@@ -21,7 +21,7 @@ services:
       - "5433:5432"
     volumes:
       - exercicios-devweb_db:/var/lib/postgresql/data
-      - ../init.sql:/docker-entrypoint-initdb.d/init.sql
+      - ../db.sql:/docker-entrypoint-initdb.d/init.sql
     networks:
       - exercicios-devweb
 
