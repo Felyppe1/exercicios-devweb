@@ -1,0 +1,22 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
+<%@ page import="java.util.List" %>
+<%@ page import="com.exercicios.devweb.Usuario" %>
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício</title>
+</head>
+<body>
+    <jsp:include page="cabecalho.html" />
+    <h1>Home</h1>
+
+    <%
+        Usuario usuario = (Usuario) session.getAttribute("usuario");
+    %>
+    <p>Bem-vindo, <strong><%= usuario.getNome() %></strong>!</p>
+    <p>Email: <%= usuario.getEmail() %></p>
+    <jsp:include page="rodape.html" />
+</body>
+</html>

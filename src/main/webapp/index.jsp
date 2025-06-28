@@ -9,29 +9,20 @@
 </head>
 <body>
     <jsp:include page="cabecalho.html" />
-    <h1>Métricas</h1>
-    <div>
-        <p>Você acessou este serviço <b><%= request.getAttribute("sessionCount") %></b> vez(es) nesta sessão.</p>
-        <p>Você acessou este serviço <b><%= request.getAttribute("browserCount") %></b> vez(es) neste navegador.</p>
-        <p>Todos os usuários acessaram este serviço <b><%= request.getAttribute("globalCount") %></b> vez(es) desde que o servidor iniciou.</p>
-    </div>
-    <form method="post" action="metricas">
-        <label for="inicio">Início:</label>
-        <input type="number" id="inicio" name="inicio" required><br><br>
-        <label for="fim">Fim:</label>
-        <input type="number" id="fim" name="fim" required><br><br>
-        <button type="submit">Contar</button>
-    </form>
-    <%
-        List<Integer> numeros = (List<Integer>) request.getAttribute("numeros");
-        if (numeros != null) {
+    <h1>Login</h1>
+    <% 
+    String error = (String) request.getAttribute("error");
     %>
-        <ul>
-        <% for (Integer n : numeros) { %>
-            <li><%= n %></li>
-        <% } %>
-        </ul>
-    <% } %>
+    <% if (error != null) { %>
+        <p style="color:red;"><%= error %></p>
+    <% } %> 
+    <form method="post" action="login">
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required><br><br>
+        <label for="senha">Senha:</label>
+        <input type="password" id="senha" name="senha" required><br><br>
+        <button type="submit">Entrar</button>
+    </form>
     <jsp:include page="rodape.html" />
 </body>
 </html>
